@@ -1,0 +1,177 @@
+﻿@model bbmscore.Models.ViewModel.BloodRequestViewModel
+@{
+    ViewData["Title"] = "Blood Request Data";
+}
+
+@if (Model.Patient != null)
+{
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-3">
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control form-control-sm" id="Name" asp-for="@Model.Patient.Name" readonly>
+                    <label for="Name" class="col-form-label">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.age" readonly>
+                    <label for="CampName" class="col-form-label">age</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.Gender" readonly>
+                    <label for="CampName" class="col-form-label">Gender</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.bloodtype" readonly>
+                    <label for="CampName" class="col-form-label">Blood Type</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.hospital" readonly>
+                    <label for="CampName" class="col-form-label">Hospital</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.Phone" readonly>
+                    <label for="CampName" class="col-form-label">Phone numuber</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control form-control-sm" id="CampName" asp-for="@Model.Patient.date" readonly>
+                    <label for="CampName" class="col-form-label">Expected Date</label>
+                </div>
+
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="Content" asp-for=@Model.Patient.Area readonly></textarea>
+                    <label class="form- label" for="describe">Area</label>
+                </div>
+                <div class=" row cols-md-12 ">
+                    <div class="col-md-2">
+                        <a asp-action="List" asp-controller="Patient" class="btn btn-dark ">Back</a>
+                    </div>
+                    <div class="col-md-4">
+                        <form asp-action="check" asp-controller="Patient" method="post">
+                            <input type="hidden" name="bloodtype" value="@Model.Patient.bloodtype" />
+                            <input type="hidden" name="patientId" value="@Model.Patient.id" />
+                            <button type="submit" class="btn btn-success ">Check and Send</button>
+                        </form>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-action="Wait" asp-controller="Patient" asp-route-requestid="@Model.Patient.id" class="btn btn-primary ">WaitList</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.PendingRequest != null)
+{
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-3">
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control form-control-sm" id="Name" asp-for="@Model.PendingRequest.Name" readonly>
+                    <label for="Name" class="col-form-label">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.age" readonly>
+                    <label for="CampName" class="col-form-label">age</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.Gender" readonly>
+                    <label for="CampName" class="col-form-label">Gender</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.bloodtype" readonly>
+                    <label for="CampName" class="col-form-label">Blood Type</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.hospital" readonly>
+                    <label for="CampName" class="col-form-label">Hospital</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.Phone" readonly>
+                    <label for="CampName" class="col-form-label">Phone numuber</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control form-control-sm" id="CampName" asp-for="@Model.PendingRequest.date" readonly>
+                    <label for="CampName" class="col-form-label">Expected Date</label>
+                </div>
+
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="Content" asp-for=@Model.PendingRequest.Area readonly></textarea>
+                    <label class="form- label" for="describe">Area</label>
+                </div>
+                <div class=" row cols-md-12 ">
+                    <div class="col-md-2">
+                        <a asp-action="List" asp-controller="Patient" class="btn btn-dark ">Back</a>
+                    </div>
+                    <div class="col-md-4">
+                        <form asp-action="check" asp-controller="Patient" method="post">
+                            <input type="hidden" name="bloodtype" value="@Model.PendingRequest.bloodtype" />
+                            <input type="hidden" name="patientId" value="@Model.PendingRequest.id" />
+                            <button type="submit" class="btn btn-success ">Check and Send</button>
+                        </form>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-action="Wait" asp-controller="Patient" asp-route-requestid="@Model.PendingRequest.id" class="btn btn-primary ">WaitList</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.receivedData != null)
+{
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-3">
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control form-control-sm" id="Name" asp-for="@Model.receivedData.Name" readonly>
+                    <label for="Name" class="col-form-label">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.age" readonly>
+                    <label for="CampName" class="col-form-label">age</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.Gender" readonly>
+                    <label for="CampName" class="col-form-label">Gender</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.bloodtype" readonly>
+                    <label for="CampName" class="col-form-label">Blood Type</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.hospital" readonly>
+                    <label for="CampName" class="col-form-label">Hospital</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.Phone" readonly>
+                    <label for="CampName" class="col-form-label">Phone numuber</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control form-control-sm" id="CampName" asp-for="@Model.receivedData.date" readonly>
+                    <label for="CampName" class="col-form-label">Expected Date</label>
+                </div>
+
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="Content" asp-for=@Model.receivedData.Area readonly></textarea>
+                    <label class="form- label" for="describe">Area</label>
+                </div>
+                <div class=" row cols-md-12 ">
+                    <div class="col-md-2">
+                        <a asp-action="List" asp-controller="Patient" class="btn btn-dark ">Back</a>
+                    </div>
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-@Model.MessageType">
+        <h4>@Model.Message</h4>
+    </div>
+}

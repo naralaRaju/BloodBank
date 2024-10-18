@@ -1,0 +1,44 @@
+﻿@model bbmscore.Models.ViewModel.EditCampaindata
+@{
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-3">
+            <h2 class="h3 mb-4">Edit Camp Details</h2>
+            <form method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="Id" readonly>
+                    <label for="CampName" class="col-form-label">Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName" asp-for="Organazation">
+                    <label for="CampName"class="col-form-label">Organization Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="CampName"  asp-for="OrganizerName">
+                    <label for="CampName" class="col-form-label">Origanizer Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control form-control-sm" id="CampName"  asp-for="Phone">
+                    <label for="CampName" class="col-form-label">Origanizer Phone numuber</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control form-control-sm" id="CampName"  asp-for="Date">
+                    <label for="CampName" class="col-form-label">Date To Campain</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="Content" asp-for="Description"></textarea>
+                    <label class="form- label" for="describe" >Describe</label>
+                </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-dark">Update</button>
+                    <button type="submit" class="btn btn-danger ms-2" asp-action="Delete"
+                    asp-controller="User"
+                    asp-route-id="Id">Delete</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

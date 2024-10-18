@@ -1,0 +1,134 @@
+﻿@model CombineofPendingandNewRequests
+@{
+    var patients = ViewBag.Patients as IEnumerable<Patients>;
+    
+}
+<div class="container ">
+    <button type="button" class="h3 btn btn-primary mt-3">New Requests Data</button>
+</div>
+@if(Model!=null && Model.Patients.Any())
+{
+    <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr class="bg-black text-white">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Hospital Name</th>
+                <th>Gender</th>
+                <th>Requested Date</th>
+                <th>     </th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Patients)
+            {
+                
+                      
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.Name</td>
+                    <td>@item.hospital</td>
+                    <td>@item.Gender</td>
+                    <td> @item.date</td>
+                    <td><a class="text-primary text-decoration-none" asp-controller="Patient" asp-route-id="@item.id" asp-action="BloodRequestData">View Details</a></td>
+                    <td><a class=" text-decoration-none btn btn-danger" asp-controller="Patient" asp-route-id="@item.id" asp-action="Delete">Delete</a></td>
+                   
+                   
+                </tr>
+                      
+               
+            }
+           
+        </tbody>
+    </table>
+}
+<div class="container ">
+    <button type="button" class="h3 btn btn-danger mt-2">Pending Requests Data</button>
+</div>
+   
+@if (Model != null && Model.pendingRequests.Any())
+{
+    <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr class="bg-black text-white">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Hospital Name</th>
+                <th>Gender</th>
+                <th>Requested Date</th>  
+                <th>     </th>
+                <th>Delete</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.pendingRequests)
+            {
+
+
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.Name</td>
+                    <td>@item.hospital</td>
+                    <td>@item.Gender</td>
+                    <td> @item.date</td>
+                    <td><a class="text-primary text-decoration-none" asp-controller="Patient" asp-route-id="@item.id" asp-action="BloodRequestData">View Details</a></td>
+                    <td><a class=" text-decoration-none btn btn-danger" asp-controller="Patient" asp-route-id="@item.id" asp-action="Delete">Delete</a></td>
+                    <td class="text-danger">Pending</td>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+}
+<div class="container ">
+    <button type="button" class="h3 btn btn-success mt-2">Sent Data</button>
+</div>
+@if (Model != null && Model.receivedData.Any())
+{
+    <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr class="bg-black text-white">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Hospital Name</th>
+                <th>Gender</th>
+                <th>sent Date</th>
+                <th>     </th>
+                <th>Delete</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.receivedData)
+            {
+
+
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.Name</td>
+                    <td>@item.hospital</td>
+                    <td>@item.Gender</td>
+                    <td> @item.date</td>
+                    <td><a class="text-primary text-decoration-none" asp-controller="Patient" asp-route-id="@item.id" asp-action="BloodRequestData">View Details</a></td>
+                    <td><a class=" text-decoration-none btn btn-danger" asp-controller="Patient" asp-route-id="@item.id" asp-action="Delete">Delete</a></td>
+                    <td class="text-success">Sent </td>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+}
+<div class="text-center">
+    <a class="text-decoration-none btn btn-dark" asp-action="Index" asp-controller="Home">Back</a>
+</div>
+
+
+

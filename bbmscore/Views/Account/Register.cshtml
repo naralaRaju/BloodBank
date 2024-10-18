@@ -1,0 +1,45 @@
+﻿@model bbmscore.Models.ViewModel.RegisterRequest
+<div class="container mx-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-lg mt-3">
+                <div class="card-header bg-primary mb-3">
+                    <h1 class="h3">Register</h1>
+                </div>
+                <div class="card-body">
+
+
+                    <form method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class=" form-control" id="UserName" asp-for="Username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                            <label class="form-label" for="UserName">UserName</label>
+
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="email" class=" form-control" id="Email" asp-for="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <label class="form-label">Email</label>
+
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class=" form-control" id="Password" asp-for="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <label class="form-label">Password</label>
+
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-dark">
+                                Register
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+}

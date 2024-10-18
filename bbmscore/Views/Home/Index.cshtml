@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInmanager
+<div class="container-fluid">
+    <div class="row">
+        <div class="card mt-5">
+            <div class="card-body">
+       
+               
+        
+                @if (signInmanager.IsSignedIn(User))
+                {
+                   
+                    <div class="clo-md-3 mb-3">
+                        <a class="text-decoration-none" asp-action="AdminsList" asp-controller="Account">Admins</a>
+                    </div>
+                    <div class="clo-md-3 mb-3 ">
+                        <a class="text-decoration-none" asp-controller="User"
+                           asp-action="Request">Request</a>
+                    </div>
+                    <div class="clo-md-3 mb-3 ">
+                        <a class="text-decoration-none" asp-controller="User"
+                           asp-action="CampDate">Camp Date</a>
+                    </div>
+                }
+               
+
+        <div class="clo-md-3 mb-3 ">
+            <a class="text-decoration-none" asp-controller="User"
+               asp-action="AddCamp">SheduleCamp</a>
+        </div>
+        <div class="clo-md-3 mb-3 ">
+            <a class="text-decoration-none" asp-controller="Patient"
+               asp-action="List">Blood Requests</a>
+        </div>
+                <div class="clo-md-3 mb-3 ">
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="BloodBank"
+                      >Blood Bank</a>
+                </div>
+        </div>
+    </div>
+    </div>
+</div>

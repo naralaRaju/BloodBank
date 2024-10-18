@@ -1,0 +1,29 @@
+﻿@model List<bbmscore.Models.Domine.Bloodstock>;
+@{
+}
+<a asp-action="Donate" asp-controller="BloodBank"  class="btn btn-success mt-3 mb-3">Donate</a>
+<a class=" text-center text-decoration-none btn btn-primary mt-3 mb-3" asp-action="DonorsList" asp-controller="BloodBank">Donors</a>
+<div class="container-fluid">
+    <table class="table table-bordered table-hover">
+        <thead >
+            <tr class="bg-black text-white">
+                <th>Container No</th>
+                <th>Blood Type</th>
+                <th>Quantity</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td> @item.containerno  </td>
+                    <td> @item.bloodtype  </td>
+                    <td> @item.bloodquantity  </td>
+                </tr>
+            }
+          
+        </tbody>
+    </table>
+    <a class=" text-center text-decoration-none btn btn-dark mt-3" asp-action="Index" asp-controller="Home">Back</a>
+</div>

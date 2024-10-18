@@ -1,0 +1,42 @@
+﻿@model bbmscore.Models.ViewModel.AdminRequest
+@{
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-3">
+           
+            <form action="AddAdmins" method="post" >
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control form-control-sm"  asp-for="username">
+                    <label  class="col-form-label" > Name</label>
+                    <span asp-validation-for="username" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" asp-for="Email">
+                    <label  class="col-form-label">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control form-control-sm"  asp-for="PhoneNumber">
+                    <label class="col-form-label"> Phone numuber</label>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm"  asp-for="Password">
+                    <label  class="col-form-label">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+               
+                
+                <div class="">
+                    <button type="submit"  class="btn btn-primary">Submit</button>
+                    <a asp-action="AdminsList" asp-controller="Account" class="btn btn-dark">Back</a>
+                </div>
+               
+            </form>
+           
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
